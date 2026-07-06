@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Sell Out | Onboarding</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="onboarding-wrap">
+    <div class="onboarding-card">
+      <h1>Payment Successful!</h1>
+      <p class="text-center mb-8">Welcome to Sell Out. Let's get your lead system set up. Please provide your details below and we will contact you on WhatsApp within 24 hours to begin your onboarding.</p>
+      
+      <form id="onboarding-form" onsubmit="submitOnboarding(event)">
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name</label>
+          <input type="text" id="fullName" class="form-control" required placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="whatsappNumber">WhatsApp Number</label>
+          <input type="tel" id="whatsappNumber" class="form-control" required placeholder="+234...">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="instagramHandle">Instagram Handle</label>
+          <input type="text" id="instagramHandle" class="form-control" required placeholder="@yourbusiness">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="productType">Primary Product Type</label>
+          <select id="productType" class="form-control" required>
+            <option value="">Select a product type...</option>
+            <option value="Bags">Bags</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Setup</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function submitOnboarding(e) {
+      e.preventDefault();
+      alert("Thank you! Your details have been submitted. We will reach out to you on WhatsApp shortly.");
+      window.location.href = "index.html"; // Redirect back to home for demo purposes
+    }
+  </script>
+</body>
+</html>
