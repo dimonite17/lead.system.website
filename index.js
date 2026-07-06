@@ -48,14 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Mock Paystack Payment Initiation
+// Paystack Payment Initiation
 function initiatePayment(tier, amount) {
-  console.log(`Initiating mock Paystack payment for ${tier} at ₦${amount}`);
-  // Simulate payment popup or redirect
-  alert(`[MOCK] Redirecting to Paystack checkout for Sell Out ${tier} (₦${amount})...\n\nAssuming successful payment, you will now be redirected to the onboarding page.`);
-  
-  // Simulate successful payment
-  setTimeout(() => {
-    window.location.href = 'onboarding.html?tier=' + tier;
-  }, 1000);
+  const email = prompt("Please enter your email address to proceed to payment:");
+  if (!email) return;
+
+  let handler = PaystackPop.setup({
+    key: 'pk_test_ee3d0e946a48f6064c373fdb26f6b2770452cef0',
+    email: email,
+    amount: amount * 100, // Amount is in kobo
+    currency: 'NGN',
+    callback: function(response){
+      // Successful payment
+      window.location.href = 'onboarding.html?tier=' + tier + '&ref=' + response.reference;
+    },
+    onClose: function(){
+      alert('Transaction was not completed, window closed.');
+    }
+  });
+  handler.openIframe();
 }
